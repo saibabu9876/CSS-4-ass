@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Box UI Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <style>
+    .main{
+        max-width: 600px;
+        margin: auto;
+        margin-top: 4%;
+        font-family: sans-serif;
+        letter-spacing: 0.5px;
+    
+    }
+    img{
+        max-width: 100%;
+        border-radius: 50%;
+    }
+    .msg-header{
+        border: 1px solid #cccccc;
+        width: 600px;
+        height: 10%;
+        display: inline-block;
+        background-color: #146ac5;
+    }
+    .msg-header-img{
+        /* border-radius: 50%; */
+        width: 40px;
+        margin-left: 3%;
+        margin-top: 10px;
+        margin-bottom: 8px;
+        float: left;
+    }
+    .active{
+        width: 120px;
+        margin-top: 10px;
+        float: left;
+    }
+    .active h4{
+        font-size: 20px;
+        margin-left: 10px;
+        color: #ffff;
+    }
+    .active h6{
+        font-size: 10px;
+        margin-left: 10px;
+        line-height: 2px;
+        color: #ffff;
+    }
+    .header-icons{
+        width: 120px;
+        float: right;
+        margin-top: 12px;
+        margin-right: 10px;
+    }
+    .header-icons .fa{
+        color: #ffff;
+        cursor: pointer;
+        margin: 9px;
+    }
+    .chatpage{
+        padding: 0 0 50px 0;
+    }
+    .inbox{
+        border: 1px solid #dfdada;
+        overflow: hidden;
+        padding-bottom: 30px;
+    }
+    .chats{
+        padding: 30px 15px 0 25px;
+    }
+    .msgpage{
+        height: 516px;
+        overflow-y: auto;
+    }
+    .rec-chatsimg{
+        display: inline-block;
+        width: 20px;
+        float: left;
+    }
+    .recchats{
+        display: inline-block;
+        padding: 0 0 0 10px;
+        vertical-align: top;
+        width: 92%;
+    }
+    .recmsg-inbox{
+        width: 57%;
+    }
+    .cd{
+        background: #ccc1c1 none repeat scroll 0 0;
+        border-radius: 10px;
+        color: #646464;
+        font-size: 18px;
+        width: 22%;
+        margin-left: 230px;
+        position: sticky;
+        top: 1px;
+    
+    }
+    .cd1{
+        background: #ccc1c1 none repeat scroll 0 0;
+        border-radius: 10px;
+        color: #646464;
+        font-size: 18px;
+        width: 22%;
+        margin-left: 230px;
+        position: sticky;
+        top: 10px;
+    }
+    .recmsg-inbox p {
+        background: #eae7e7 none repeat scroll 0 0;
+        border-radius: 10px;
+        color: #646464;
+        font-size: 14px;
+        margin: 0;
+        padding: 5px 10px 5px 12px;
+        width: 100%;
+    }
+    .time{
+        color: #777;
+        display: block;
+        font-size: 12px;
+        margin: 8px 0 0;
+    
+    }
+    .outchats{
+        overflow: hidden;
+        margin: 26px 20px;
+    }
+    .outmsg p{
+        background: #007bff none repeat scroll 0 0;
+        color: #ffff;
+        border-radius: 10px;
+        font-size: 14px;
+        margin: 0;
+        color: #ffff;
+        padding: 5px 10px 5px 12px;
+        width: 100%;
+    }
+    .outmsg{
+        float: left;
+        width: 45%;
+        margin-left: 45%;
+    }
+    .out-chatsimg{
+        display: inline-block;
+        width: 20px;
+        float: right;
+    }
+    .msg-bottom {
+        position:relative;
+        height: 10%;
+        background-color: #007bff;
+    }
+    .input-group{
+        float: right;
+        margin-top: 13px;
+        margin-right: 20px;
+        outline: none !important;
+        border-radius: 20px;
+        width: 61% !important;
+        background-color: #fff;
+    }
+    .form-control{
+        border: none !important;
+        border-radius: 20px !important;
+    }
+    .input-group-text{
+        background:transparent;
+        border: none !important;
+    }
+    .input-group .fa{ 
+        color: #007bff;
+        float: right;
+    }
+    .bottom-icons{
+        float: left;
+        margin-top: 17px;
+        width: 30% !important;
+        margin-left: 22px;
+    }
+    .bottom-icons .fa{
+        color: #804c4c;
+        padding: 5px;
+    }
+    .form-control:focus{
+        border-color: none !important;
+        box-shadow: none !important;
+        border-radius: 20px;
+    }
+    </style>    
+</head>
+<body>
+    <div class="main">
+        <div class="msg-header">
+            <div class="msg-header-img">
+                <img src="./images/IMG-20200915-WA0018.jpg">
+            </div>
+            <div class="active">
+                <h4>SAI</h4>
+                <h6>1 hour ago...</h6>
+            </div>
+            <div class="header-icons">
+                <i class="fa fa-phone" ></i>
+                <i class="fa fa-video-camera"></i>
+                <i class="fa fa-info-circle"></i>
+            </div>
+            
+        </div>
+            <div class="chatpage">
+                <div class="inbox">
+                    <div class="cd"><center>Monday</center></div>
+                    <div class="chats">
+                        <div class="msgpage">
+                    <div class="recchats">
+                    <div class="rec-chatsimg">
+                        <img src="./images/IMG-20200915-WA0018.jpg">
+                    </div>
+                    <div class="recmsg">
+                    <div class="recmsg-inbox">
+                    <p>Hi...</p>
+                    <span class="time">11:00 PM</span>
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="outchats">
+                    <div class="outmsg"> 
+                    <p>Who's this..?</p>
+                    <span class="time">11:00 PM</span>   
+                    </div>
+                    <div class="out-chatsimg">
+                        <img src="./images/IMG-20200915-WA0018.jpg">
+                    </div>
+                    <div class="recchats">
+                        <div class="rec-chatsimg">
+                            <img src="./images/IMG-20200915-WA0018.jpg">
+                        </div>
+                    <div class="recmsg">
+                    <div class="recmsg-inbox">
+                    <p>this is Sai...</p>
+                    <span class="time">11:00 PM</span>
+                    </div>
+                    
+                    </div>
+                    </div>
+
+                    <div class="outchats">
+                    <div class="outmsg"> 
+                    <p>Hoooo ok...</p>
+                    <span class="time">11:02 PM</span>   
+                    </div>
+                    <div class="out-chatsimg">
+                        <img src="./images/IMG-20200915-WA0018.jpg">
+                    </div>
+                </div>
+
+                <div class="recchats">
+                    <div class="rec-chatsimg">
+                        <img src="./images/IMG-20200915-WA0018.jpg">
+                    </div>
+                    <div class="recmsg">
+                    <div class="recmsg-inbox">
+                    <p>How r u</p>
+                    <span class="time">11:03 PM</span>
+                    </div>
+                    </div>
+                    </div>
+
+
+                    <div class="outchats">
+                        <div class="outmsg"> 
+                        <p>fine 
+                            what about u ?
+                        </p>
+                        <span class="time">11:04 PM</span>   
+                    </div>
+                    <div class="out-chatsimg">
+                        <img src="./images/IMG-20200915-WA0018.jpg">
+                    </div>
+                </div>
+
+                <div class="recchats">
+                    <div class="rec-chatsimg">
+                        <img src="./images/IMG-20200915-WA0018.jpg">
+                    </div>
+                    <div class="recmsg">
+                    <div class="recmsg-inbox">
+                    <p>fine tq</p>
+                    <span class="time">11:04 PM</span>
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="outchats">
+                        <div class="outmsg"> 
+                        <p>what r u doing ?</p>
+                        <span class="time">11:05 PM</span>   
+                        </div>
+                        <div class="out-chatsimg">
+                            <img src="./images/IMG-20200915-WA0018.jpg">
+                        </div>
+                    </div>
+
+                    <div class="recchats">
+                        <div class="rec-chatsimg">
+                            <img src="./images/IMG-20200915-WA0018.jpg">
+                        </div>
+                        <div class="recmsg">
+                        <div class="recmsg-inbox">
+                        <p>i am  doing job...</p>
+                        <span class="time">11:05 PM</span>
+                        </div>
+                        </div>
+                        </div>
+
+                        <div class="outchats">
+                            <div class="outmsg"> 
+                            <p>hooo ok 
+                                bye
+                            </p>
+                            <span class="time">11:06 PM</span>   
+                            </div>
+                            <div class="out-chatsimg">
+                                <img src="./images/IMG-20200915-WA0018.jpg">
+                            </div>
+                        </div>
+</div>
+</div>
+</div>
+
+<div class="msg-bottom">
+<div class="bottom-icons">
+<i class="fa fa-plus-circle" ></i>
+<i class="fa fa-camera" ></i>
+<i class="fa fa-microphone" ></i>
+<i class="fa fa-smile" ></i>
+</div>
+<div class="input-group">
+<input type="text" class="form-control" placeholder="write message...">
+<div class="input-group-append">
+<span class="input-group-text"><i class="fa fa-paper-plane"></i></span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</body>
+</html>
